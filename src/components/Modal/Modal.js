@@ -14,7 +14,6 @@ const Modal = ({
 
   ...props
 }) => {
-  console.log(initialValues, "initialValues");
   return (
     <div className="modalContainer">
       <div className="modalContent">

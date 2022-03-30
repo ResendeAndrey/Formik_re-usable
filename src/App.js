@@ -2,6 +2,7 @@ import { Login } from "./components/LoginModal/Login";
 import { useState } from "react";
 import Modal from "./components/Modal/Modal";
 import "./styles.css";
+import { email, password } from "./utils/validations";
 import * as yup from "yup";
 
 export default function App() {
@@ -13,11 +14,11 @@ export default function App() {
   const handleSubmit = (values) => {
     console.log(values);
   };
-
-  const SignUpSchema = yup.object({
-    email: yup.string().email().required("E-mail é requerido"),
-    password: yup.string().required("Password é requerido")
+  const validations = yup.object({
+    email: email,
+    password: password
   });
+
   return (
     <div className="App">
       <h1>Hello CodeSandbox</h1>
@@ -31,7 +32,7 @@ export default function App() {
           initialValues={initialValues}
           handleSubmit={handleSubmit}
           component={Login}
-          validationSchema={SignUpSchema}
+          validationSchema={validations}
           onClose={setOpenModal}
         />
       )}
